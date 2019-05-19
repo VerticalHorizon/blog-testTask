@@ -1,0 +1,24 @@
+version: '3'
+services:
+
+  # The Database
+  database:
+    image: postgres:11-alpine
+    environment:
+      - POSTGRES_DB=starnavi_app
+      - POSTGRES_USER=starnavi_user
+      - POSTGRES_PASSWORD=secret
+
+  service-api:
+    build:
+      context: .
+      dockerfile: ./bin/service-api.dockerfile
+    ports:
+     - 8100:8000
+    volumes:
+     - ./app:/opt/application
+    environment:
+      APP_GUNICORN_USE: app.wsgi:application
+      APP_MIGRATE: 1
+    env_file:
+      - .env
