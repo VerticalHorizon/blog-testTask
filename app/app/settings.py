@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import datetime
 
 import environ
 
@@ -19,7 +20,7 @@ env = environ.Env(
     DEBUG=(bool, True),
     SECRET_KEY=(str, '5u!l(5a=65d++69ieylv%cq+wgfhe6xef6)o#@t^!+6kwzh078'),
     JWT_SECRET_KEY=(str, '3uy49htr2vr48g76ftsk4'),
-    ALLOWED_HOSTS=(str),
+    ALLOWED_HOSTS=(str, '*'),
 )
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -43,7 +44,6 @@ else:
     ALLOWED_HOSTS = []
 
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -53,6 +53,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
+    'rest_framework',
+
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -88,18 +92,9 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 DATABASES = {
     # read os.environ['DATABASE_URL'] and raises ImproperlyConfigured exception if not found
     'default': env.db(),
-    # read os.environ['SQLITE_URL']
-    'extra': env.db('SQLITE_URL', default='sqlite:////tmp/my-tmp-sqlite.db')
 }
 
 # Password validation
@@ -139,3 +134,26 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ],
+}
+
+JWT_AUTH = {
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'rest_framework_jwt.utils.jwt_response_payload_handler',
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
+    'JWT_ALLOW_REFRESH': True,
+    'JWT_SECRET_KEY': JWT_SECRET_KEY,
+    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
+}
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True

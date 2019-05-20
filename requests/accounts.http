@@ -1,0 +1,38 @@
+POST http://0.0.0.0:8100/api/accounts/signup/
+Content-Type: application/json
+
+{
+  "email": "mm@karellens.com",
+  "username": "nebuchadnezzar",
+  "password": "qwerty123"
+}
+
+###
+
+POST http://0.0.0.0:8100/api/accounts/signin/
+Content-Type: application/json
+
+{
+  "username": "nebuchadnezzar",
+  "password": "qwerty123"
+}
+
+###
+
+POST http://0.0.0.0:8100/api/accounts/refresh/
+Content-Type: application/json
+
+{
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6Im5lYnVjaGFkbmV6emFyIiwiZXhwIjoxNTU4NDU4ODM0LCJlbWFpbCI6Im1tQGthcmVsbGVucy5jb20iLCJvcmlnX2lhdCI6MTU1ODM3MjQzNH0.GXQapUeJg2yUKpEWZa8x7-17fWoDJPmJXC0GaU11CBo"
+}
+
+###
+
+POST http://0.0.0.0:8100/api/accounts/verify/
+Content-Type: application/json
+
+{
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6Im5lYnVjaGFkbmV6emFyIiwiZXhwIjoxNTU4NDU4ODM0LCJlbWFpbCI6Im1tQGthcmVsbGVucy5jb20iLCJvcmlnX2lhdCI6MTU1ODM3MjQzNH0.GXQapUeJg2yUKpEWZa8x7-17fWoDJPmJXC0GaU11CBo"
+}
+
+###
