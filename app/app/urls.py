@@ -20,5 +20,6 @@ from django.urls import include, path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/accounts/', include('accounts.urls')),
+    path('api/posts/', include('posts.urls')),
     path('', lambda request: JsonResponse({'status': 'OK'})),
 ]

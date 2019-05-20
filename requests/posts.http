@@ -1,0 +1,40 @@
+POST http://0.0.0.0:8100/api/posts/
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6Im5lYnVjaGFkbmV6emFyIiwiZXhwIjoxNTU4NDcwNTc4LCJlbWFpbCI6Im1tQGthcmVsbGVucy5jb20iLCJvcmlnX2lhdCI6MTU1ODM4NDE3OH0.KVq4A9PP6GoDkaD9-Pda3NlVmsKxH-GXphJUGa5SApw
+
+{
+  "title": "First",
+  "body": "smthng"
+}
+
+###
+
+GET http://0.0.0.0:8100/api/posts/
+Content-Type: application/json
+
+###
+
+GET http://0.0.0.0:8100/api/posts/1/
+Content-Type: application/json
+
+###
+
+POST http://0.0.0.0:8100/api/posts/1/like/
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6Im5lYnVjaGFkbmV6emFyIiwiZXhwIjoxNTU4NDc2NDQ1LCJlbWFpbCI6Im1tQGthcmVsbGVucy5jb20iLCJvcmlnX2lhdCI6MTU1ODM5MDA0NX0.enowFjHTqwYPgb_PYAhP-h3uu8-sTGNsciqmMeXRyMo
+
+{
+  "positive": "true"
+}
+
+###
+
+POST http://0.0.0.0:8100/api/posts/2/unlike/
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6Im5lYnVjaGFkbmV6emFyIiwiZXhwIjoxNTU4NDc2NDQ1LCJlbWFpbCI6Im1tQGthcmVsbGVucy5jb20iLCJvcmlnX2lhdCI6MTU1ODM5MDA0NX0.enowFjHTqwYPgb_PYAhP-h3uu8-sTGNsciqmMeXRyMo
+
+{
+  "positive": "false"
+}
+
+###
