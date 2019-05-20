@@ -7,6 +7,7 @@ RUN apk update && \
  apk --purge del .build-deps
 
 WORKDIR /opt/application
+VOLUME ./app /opt/application
 COPY Pipfile /opt/application/Pipfile
 COPY Pipfile.lock /opt/application/Pipfile.lock
 RUN pip install -U pip && pip install pipenv && pipenv install --system --deploy
