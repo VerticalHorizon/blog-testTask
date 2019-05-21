@@ -14,13 +14,9 @@ class Post(models.Model):
     def likes(self):
         return self.reactions.filter(positive=True)
 
-    @property
-    def unlikes(self):
-        return self.reactions.filter(positive=False)
-
 
 class Reaction(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     post = models.ForeignKey(Post, related_name='reactions', on_delete=models.CASCADE)
-    positive = models.BooleanField(default=True)
+    positive = models.BooleanField(default=True)    # dislike possibility
     created_at = models.DateTimeField(auto_now_add=True)

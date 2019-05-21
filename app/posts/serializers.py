@@ -16,17 +16,7 @@ class PostSerializer(serializers.ModelSerializer):
         source='likes.count',
         read_only=True
     )
-    unlikes_count = serializers.IntegerField(
-        source='unlikes.count',
-        read_only=True
-    )
 
     class Meta:
         model = Post
-        fields = ('id', 'user', 'title', 'body', 'created_at', 'likes_count', 'unlikes_count',)
-
-
-class ReactionSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Reaction
-        fields = ('id', 'post', 'positive', 'user',)
+        fields = ('id', 'user', 'title', 'body', 'created_at', 'likes_count',)
