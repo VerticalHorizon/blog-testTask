@@ -8,6 +8,8 @@ services:
       - POSTGRES_DB=blog_app
       - POSTGRES_USER=db_user
       - POSTGRES_PASSWORD=secret
+    volumes:
+      - db-data:/var/lib/postgresql/data
 
   service-api:
     build:
@@ -22,3 +24,6 @@ services:
       APP_MIGRATE: 1
     env_file:
       - .env
+
+volumes:
+  db-data: {}

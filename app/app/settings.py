@@ -20,7 +20,7 @@ env = environ.Env(
     DEBUG=(bool, True),
     SECRET_KEY=(str, '5u!l(5a=65d++69ieylv%cq+wgfhe6xef6)o#@t^!+6kwzh078'),
     JWT_SECRET_KEY=(str, '3uy49htr2vr48g76ftsk4'),
-    ALLOWED_HOSTS=(str, '*'),
+    ALLOWED_HOSTS=(list, ['*']),
 )
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -37,11 +37,7 @@ JWT_SECRET_KEY = env('JWT_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS_CONFIG = env('ALLOWED_HOSTS')  # type: str
-if ALLOWED_HOSTS_CONFIG:
-    ALLOWED_HOSTS = ALLOWED_HOSTS_CONFIG.split(',')
-else:
-    ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 
 
 # Application definition
