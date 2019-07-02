@@ -5,8 +5,8 @@ services:
   database:
     image: postgres:11-alpine
     environment:
-      - POSTGRES_DB=starnavi_app
-      - POSTGRES_USER=starnavi_user
+      - POSTGRES_DB=blog_app
+      - POSTGRES_USER=db_user
       - POSTGRES_PASSWORD=secret
 
   service-api:

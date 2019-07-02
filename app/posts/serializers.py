@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model  # In case we will want to change default User model to custom
 from rest_framework import serializers
-from .models import Post, Reaction
+from .models import Post
 
 __all__ = ['PostSerializer']
 

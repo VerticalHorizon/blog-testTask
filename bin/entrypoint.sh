@@ -2,7 +2,7 @@
 
 set -e
 
-APP_GUNICORN_USE=${APP_GUNICORN_USE:-"starnavi_test_task.app.wsgi:application"}
+APP_GUNICORN_USE=${APP_GUNICORN_USE:-"app.wsgi:application"}
 APP_GUNICORN_MAX_REQUESTS=${APP_GUNICORN_MAX_REQUESTS:-"1000"}
 
 APP_WORKERS_DEFAULT=$(nproc)

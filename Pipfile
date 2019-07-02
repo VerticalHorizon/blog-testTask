@@ -6,14 +6,14 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-django = "*"
+django = "==2.2.3"
 djangorestframework = "*"
 djangorestframework-jwt = "*"
-psycopg2-binary = "*"
+psycopg2-binary = "==2.8.3"
 gunicorn = "*"
 gevent = "*"
 django-environ = "*"
-django-extensions = "*"
+django-extensions = "==2.1.9"
 
 [requires]
 python_version = "3.7"
